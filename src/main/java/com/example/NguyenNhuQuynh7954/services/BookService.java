@@ -22,7 +22,15 @@ public class BookService {
         bookRepository.save(book);
     }
     public void deleteBook(Long id) {
-        bookRepository.deleteById(id);
+        try {
+            bookRepository.deleteById(id);
+            // Log success
+            System.out.println("Deleted book with id: " + id);
+        } catch (Exception e) {
+            // Log error
+            System.err.println("Error deleting book with id: " + id);
+            e.printStackTrace();
+        }
     }
     public void updateBook(Book book) {
         bookRepository.save(book);

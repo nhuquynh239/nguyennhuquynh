@@ -42,8 +42,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository()))
                 .authorizeRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers( "/css/**", "/js/**", "/", "/register", "/error").permitAll()
-                        .requestMatchers( "/books/edit", "/books/delete").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/css/**", "/js/**", "/", "/register", "/error").permitAll()
+                        .requestMatchers("/books/edit/**", "/books/delete/**").hasAuthority("ADMIN")
                         .requestMatchers("/books", "/books/add").hasAnyAuthority("ADMIN", "USER")
                         .requestMatchers("/api/**").hasAnyAuthority("ADMIN", "USER")
                         .anyRequest().authenticated()
